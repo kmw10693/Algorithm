@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <algorithm>
 
 using namespace std;
 
@@ -8,6 +9,7 @@ int checkArr[100005];
 
 const int CYCLE_IN = -1;
 const int NOT_VISITED = 0;
+
 
 void run(int x)
 {
