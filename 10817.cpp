@@ -1,32 +1,33 @@
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 
-int main(void)
-{
-    int a,b,c;
-    scanf("%d %d %d",&a, &b, &c);
-    if(a>b)
+int main(void) {
+    while(1)
     {
-        if(a>c)
+        int a[3];
+        for(int i=0; i<3; i++)
         {
-            if(b>c)
-                printf("%d", b);
-            else
-                printf("%d", c);
+            scanf("%d",&a[i]);
         }
-        else
-            printf("%d", a);
-    }
-    else // a<b b<c
-    {
-        if(b>c)
+        if(a[0] == 0 && a[1] == 0 && a[2] == 0)
+            break;
+        for(int i=0; i<3; i++)
         {
-            if(c>a)
-                printf("%d", c);
-            else
-                printf("%d", a);
+            for(int j=0; j<2; j++)
+            {
+                if(a[j] > a[j+1])
+                {
+                    int tmp = a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = tmp;
+                    
+                }
+            }
         }
+        if(a[2]*a[2] == a[1]*a[1] + a[0]*a[0])
+            printf("right\n");
         else
-            printf("%d", b);    
+            printf("wrong\n");
+            
     }
-       
 }
