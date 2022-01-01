@@ -1,29 +1,56 @@
-#include <iostream>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-void star(int i, int j, int num)
+char map2[10000][10000];
+
+void draw(int x, int y, int N)
 {
-    if((i / num)%3 == 1 && (j/num)%3 == 1)
+    for(int i=x; i<x+N; i++)
     {
-        cout << " ";
+        for(int j=y; j<y+N; j++)
+        {
+            if(i%3 == 1 && j%3 == 1) map2[i][j] = ' ';
+            
+            else map2[i][j] = '*';
+        }
+        
     }
-    else
+}
+
+void start(int x, int y, int N)
+{
+    if(N == 3)
     {
-        if(num / 3 == 0)
-            cout << "*";
-        else
-            star(i, j, num/3);
+        draw(x,y,N);
+        return;
     }
+    for(int i=x; i<x+N; i+=N/3)
+    {
+        for(int j=y; j<y+N; j+=N/3)
+        {
+            if(N>3){
+                if(i%N/(N/3) != 1 || j%N/(N/3) != 1) start(i,j,N/3);
+            }
+                
+        }
+    }
+
+    
 }
 
 int main()
 {
-    int num;
-    cin >> num;
-    for(int i=0; i<num; i++)
+    int N;
+    cin >> N;
+    memset(map2, ' ', sizeof(map2));
+    start(0,0,N);
+    for(int i=0; i<N; i++)
     {
-        for(int j=0; j<num; j++)
-            star(i, j, num);
-        cout << "\n";
+        for(int j=0; j<N; j++)
+        {
+            cout << map2[i][j];
+        }
+        cout<< "\n";
     }
 }
