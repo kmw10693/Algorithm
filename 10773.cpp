@@ -5,7 +5,8 @@ using namespace std;
 
 int main(void)
 {
-    
+    ios::sync_with_stdio(0);
+
     stack<int> s;
     int k;
     cin >> k;
