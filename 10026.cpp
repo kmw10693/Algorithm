@@ -100,7 +100,6 @@ int main(void)
                 {
                     int x = t.X + dx[as];
                     int y = t.Y + dy[as];
-                    
                     if(x < 0 || x >= n || y < 0 || y >= n)
                         continue;
                     if(check2[x][y] > 0 || check[x][y] != check[t.X][t.Y])
