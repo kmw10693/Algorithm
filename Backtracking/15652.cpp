@@ -2,33 +2,42 @@
 
 using namespace std;
 
-int n,m;
+int m,n;
+int arr[10];
+int arrcheck[10];
+int checkt;
 
-int arr[20];
-bool vis[20];
-
-void cur(int t, int k){
-    if(t == m){
-        for(int i=0; i<m; i++){
-            cout << arr[i] << ' ';
+void check(int x)
+{
+    if(x == n)
+    {
+        for(int i=0; i<n; i++)
+        {
+            cout << arr[i] << " ";
         }
-        cout << '\n';
+        cout <<"\n";
         return;
     }
-    for(int i=1; i<=n; i++){
-        if(k <= i){
-            arr[t] = i;
-            vis[i] = 1;
-            cur(t+1, i);
-            vis[i] = 0;
-        }
-    }
+    for(int i=1; i<=m; i++)
+    {
+        
+        arrcheck[i] = 1;
+        arr[x] = i;
+        if(checkt <= arr[x]){
+          checkt = arr[x];
+          check(x+1);
+          checkt = arr[x];
+        } 
     
+        arrcheck[i] = 0;
+    }
 }
-int main() {
+
+int main()
+{
     ios::sync_with_stdio(0);
     cin.tie(0);
     
-    cin >> n >> m;
-    cur(0,0);
+    cin >> m >> n;
+    check(0);
 }
