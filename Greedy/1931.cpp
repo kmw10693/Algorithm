@@ -2,23 +2,23 @@
 using namespace std;
 
 int n;
-pair<int, int> s[100005];
+pair<int, int> v[100005];
 
 int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
     cin >> n;
+    // 입력
     for(int i=0; i<n; i++) {
-        cin >> s[i].second >> s[i].first;
+        // 우선 끝나는 시간부터 정렬
+        cin >> v[i].second >> v[i].first;
     }
-    sort(s, s+n);
+    sort(v, v+n); // 정렬
     
-    int ans=0;
-    int t=0;
-    for(int i=0; i<n; i++){
-        if(t > s[i].second) continue;
+    int t = 0, ans = 0; // 시간과 정답
+    for(int i=0; i<n; i++) {
+        // 만약 시간이 넘어서면 오답
+        if(t > v[i].second) continue;
         ans++;
-        t = s[i].first;
+        t = v[i].first;
     }
     cout << ans;
 }
